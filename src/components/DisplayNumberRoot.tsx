@@ -1,10 +1,16 @@
+import { FC } from 'react'
 import DisplayNumber from './DisplayNumber'
 
-const DisplayNumberRoot = () => {
+interface Props {
+    number : number
+}
+
+const DisplayNumberRoot : FC<Props> = ({number}) => {
+
     return(
       <div>
         <h1>Display Number Root</h1>
-        <DisplayNumber/>
+        <DisplayNumber number={number}/>
       </div>
     )
   }
