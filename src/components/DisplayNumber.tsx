@@ -5,11 +5,11 @@ interface Props {
 }
 
 const DisplayNumber : FC<Props> = ({number}) => {
-
+  
     return(
       <div>
         <h1>Display Number</h1>
-        <input type='text' value={number} readOnly/>
+        <input type='text' data-testid="value" value={number} readOnly/>
       </div>
     )
   }
