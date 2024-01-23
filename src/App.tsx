@@ -2,13 +2,18 @@ import './App.css';
 import AddNumberRoot from './components/AddNumberRoot';
 import DisplayNumberRoot from './components/DisplayNumberRoot';
 
+export interface StateType {
+  number : number,
+  inputValue : number
+}
 
-function App() {
+const App = () => {
+
   return (
     <div className="App">
       <h1>Root</h1>
-      <AddNumberRoot/>
-      <DisplayNumberRoot/>
+      <AddNumberRoot />
+      <DisplayNumberRoot />
     </div>
   );
 }
