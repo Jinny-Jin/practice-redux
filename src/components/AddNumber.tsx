@@ -1,10 +1,8 @@
-import { ChangeEvent, Dispatch, FC, SetStateAction, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
+import store from '../store'
 
-interface Props {
-  setNumber : Dispatch<SetStateAction<number>>
-}
 
-const AddNumber : FC<Props> = ({setNumber}) => {
+const AddNumber = () => {
     const [changeNumber, setChangeNumber] = useState(0)
 
     const getNumber = (e :ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +19,7 @@ const AddNumber : FC<Props> = ({setNumber}) => {
       <div>
         <h1>Add Number</h1>
         <input type='button' value='+' onClick={()=>{
-          setNumber(prev => (prev + changeNumber))
+          store.dispatch({type : 'INCREMENT', changeNumber : changeNumber})
         }}/>
         <input type='text' 
         data-testid="numb" 

@@ -1,10 +1,7 @@
-import { FC } from 'react'
+import { useSelector } from 'react-redux'
 
-interface Props {
-  number : number
-}
-
-const DisplayNumber : FC<Props> = ({number}) => {
+const DisplayNumber = () => {
+    const number = useSelector((state : any) => state.number)
   
     return(
       <div>
