@@ -6,25 +6,33 @@ const initialState = {
     ],
     mode : 'read',
     selectedId : 1,
+    finalId : 3
 }
 
 const reducer = (state : any = initialState, action :any) => {
+
     switch (action.type) {
         case 'SELECT':
             return(
                 {...state, selectedId: action.id, mode: 'read'}
                 )
+
         case 'CHANGE_MODE' :
             return(
                 {...state, mode : action.mode}
             )
         case 'CREATE' :
             const newContents = [...state.contents,{
-                id : state.contents[state.contents.length-1].id + 1, 
+                id : state.finalId + 1, 
                 title : action.title, 
                 desc : action.desc
             }]
             return({...state, contents : newContents})
+        case 'DELETE' :
+            const deletedContents = state.contents.filter((item : any) => item.id !== state.selectedId)
+            return(
+                    {...state, contents : deletedContents}
+                )
 
         default:
             return state;

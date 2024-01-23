@@ -24,7 +24,9 @@ const TodoList = () => {
                 <button onClick={()=>{
                     dispatch({type : 'CHANGE_MODE', mode : 'create'})
                 }}>create</button>
-                <button>delete</button>
+                <button onClick={()=>{
+                    dispatch({type : 'DELETE'})
+                }}>delete</button>
             </div>
         <TodoContent/>
     </>
