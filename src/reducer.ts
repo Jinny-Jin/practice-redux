@@ -3,13 +3,18 @@ type ActionType = {
     changeNumber : number
 }
 
-const initialState = {number : 0}
+const initialState = {
+    number : 0, 
+    inputValue : 0
+}
 
 const reducer = (state : any = initialState, action : ActionType) => {
     if(action.type === 'INCREMENT'){
         return {...state, number : state.number + action.changeNumber}
     }
-
+    if(action.type === 'INPUT'){
+        return {...state, inputValue : action.changeNumber}
+    }
     return state
 
 }
