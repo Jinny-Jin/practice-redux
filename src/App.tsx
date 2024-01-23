@@ -2,6 +2,10 @@ import './App.css';
 import AddNumberRoot from './components/AddNumberRoot';
 import DisplayNumberRoot from './components/DisplayNumberRoot';
 
+export interface StateType {
+  number : number,
+  inputValue : number
+}
 
 const App = () => {
 

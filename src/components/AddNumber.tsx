@@ -1,9 +1,10 @@
 import { ChangeEvent } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { StateType } from '../App'
 
 const AddNumber = () => {
     const dispatch = useDispatch()
-    const inputNumber = useSelector((state : any) => state.inputValue)
+    const inputNumber = useSelector((state : StateType) => state.inputValue)
 
     const getNumber = (e :ChangeEvent<HTMLInputElement>) => {
       const parsedNumber = Number(e.target.value)

@@ -1,3 +1,5 @@
+import { StateType } from './App'
+
 type ActionType = {
     type : string,
     changeNumber : number
@@ -8,7 +10,7 @@ const initialState = {
     inputValue : 0
 }
 
-const reducer = (state : any = initialState, action : ActionType) => {
+const reducer = (state : StateType = initialState, action : ActionType) => {
     if(action.type === 'INCREMENT'){
         return {...state, number : state.number + action.changeNumber}
     }

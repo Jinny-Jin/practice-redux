@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux'
+import { StateType } from '../App'
 
 const DisplayNumber = () => {
-    const number = useSelector((state : any) => state.number)
+    const number = useSelector((state : StateType) => state.number)
   
     return(
       <div>
