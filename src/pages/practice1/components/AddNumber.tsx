@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { StateType } from '../App'
+import { StateType } from '../Practice1'
 
 const AddNumber = () => {
     const dispatch = useDispatch()

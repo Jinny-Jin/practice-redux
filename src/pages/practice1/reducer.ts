@@ -1,4 +1,4 @@
-import { StateType } from './App'
+import { StateType } from './Practice1'
 
 type ActionType = {
     type : string,

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { StateType } from '../App'
+import { StateType } from '../Practice1'
 
 const DisplayNumber = () => {
     const number = useSelector((state : StateType) => state.number)
