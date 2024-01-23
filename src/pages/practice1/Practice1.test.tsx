@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import "@testing-library/jest-dom/extend-expect"
-import App from './Practice1';
 import { Provider } from 'react-redux';
 import store from './store';
+import Counter from './Practice1';
 
 // 테스트 해야 할 것
 
@@ -15,7 +15,7 @@ import store from './store';
 const renderApp = () => {
   render(
     <Provider store={store}>
-    <App/>
+      <Counter/>
     </Provider>
   )
   const numberInput = screen.getByTestId("numb")
