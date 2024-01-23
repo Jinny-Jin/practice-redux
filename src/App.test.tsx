@@ -1,6 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import "@testing-library/jest-dom/extend-expect"
 import App from './App';
+import { Provider } from 'react-redux';
+import store from './store';
 
 // 테스트 해야 할 것
 
@@ -9,8 +11,13 @@ import App from './App';
 // 3. + 버튼을 여러 번 누르면 누적으로 더해지는 가
 // 4. 숫자 이외의 값을 입력했을 때 정상적으로 처리가 되는가 
 
+
 const renderApp = () => {
-  render(<App/>)
+  render(
+    <Provider store={store}>
+    <App/>
+    </Provider>
+  )
   const numberInput = screen.getByTestId("numb")
   const plusButton = screen.getByRole("button")
   const displayInput = screen.getByTestId("value")

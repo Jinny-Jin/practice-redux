@@ -1,7 +1,6 @@
 import { ChangeEvent, useState } from 'react'
 import store from '../store'
 
-
 const AddNumber = () => {
     const [changeNumber, setChangeNumber] = useState(0)
 
