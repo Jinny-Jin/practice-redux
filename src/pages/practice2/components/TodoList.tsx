@@ -1,35 +1,31 @@
 import TodoContent from './TodoContent'
+import { useDispatch, useSelector } from 'react-redux'
+
 
 const TodoList = () => {
+    const dispatch = useDispatch()
+    const content = useSelector((state : any) => state.contents)
+
     return (
         <>
             <ol>
-            <li>
-                <input
-                type='checkbox'
-                id='todo1'
-                />
-                <label htmlFor='todo1'>6시 기상</label>
-            </li>
-            <li>
-                <input
-                type='checkbox'
-                id='todo2'
-                />
-                <label htmlFor='todo2'>생활코딩 강의 수강</label>
-            </li>
-            <li>
-                <input
-                type='checkbox'
-                id='todo3'
-                />
-                <label htmlFor='todo3'>리액트 블로그 정리</label>
-            </li>
-        </ol>
-        <div>
-            <button>create</button>
-            <button>delete</button>
-        </div>
+                {content.map((item : any) => {
+                    return(
+                        <li key={item.id}>
+                            <label onClick={()=>{
+                                dispatch({type : 'SELECT', id : item.id})
+                            }}>{item.title}</label>
+                            <input type='checkbox' id={item.id}/>
+                        </li>
+                    )
+                })}
+            </ol>
+            <div>
+                <button onClick={()=>{
+                    dispatch({type : 'CHANGE_MODE', mode : 'create'})
+                }}>create</button>
+                <button>delete</button>
+            </div>
         <TodoContent/>
     </>
     )

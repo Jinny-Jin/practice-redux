@@ -1,16 +1,23 @@
-import {useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 const TodoContent = () => {
-    const [mode, setMode] = useState('create')
+    const dispatch = useDispatch()
+    const content = useSelector((state : any) => state.contents)
+    const mode = useSelector((state : any) => state.mode)
+    const selectedId = useSelector((state: any)=> state.selectedId)
 
     return(
         <div className='container'>
-            {mode === 'read' && (
-                <>
-                <h2>6시 기상</h2>
-                <div>우히히 6시에 안일어나도 몰라~~</div>
-                </>
-            )}
+            {mode === 'read' && 
+            content.map((item : any) =>
+                item.id === selectedId && (
+                    <>
+                        <h2>{item.title}</h2>
+                        <div>{item.desc}</div>
+                    </>
+                )
+            )
+            }
             {mode === 'create' && (
                 <>
                     <div>
