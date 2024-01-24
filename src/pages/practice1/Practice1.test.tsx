@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import "@testing-library/jest-dom/extend-expect"
-import App from './Practice1';
 import { Provider } from 'react-redux';
 import store from './store';
+import Counter from './Practice1';
 
 // 테스트 해야 할 것
 
@@ -15,7 +15,7 @@ import store from './store';
 const renderApp = () => {
   render(
     <Provider store={store}>
-    <App/>
+      <Counter/>
     </Provider>
   )
   const numberInput = screen.getByTestId("numb")
@@ -25,7 +25,7 @@ const renderApp = () => {
   return {numberInput, plusButton, displayInput}
 }
 
-describe("Test App", () => {
+describe("Test Counter", () => {
   test("화면에 요소들이 제대로 렌더링 되야 함",()=>{
     //arrange
     const {numberInput, plusButton, displayInput} = renderApp()
@@ -58,7 +58,7 @@ describe("Test App", () => {
     fireEvent.click(plusButton)
 
     //assert
-    expect(displayInput).toHaveValue('30')
+    expect(displayInput).toHaveValue('35')
 
   })
   test("숫자 이외의 값을 입력했을 땐 더해지지 않아야 함",()=>{
