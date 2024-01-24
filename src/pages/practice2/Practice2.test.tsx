@@ -17,24 +17,23 @@ const renderApp = () => {
             <Todo/>
         </Provider>
     ) 
-    const firstList = screen.getByTestId(1)
-    const secondList = screen.getByTestId(2)
-    const thirdList = screen.getByTestId(3)
+
+    const getListItem = (id : number) => screen.getByTestId(id)
     const createModeButton = screen.getByText(/create/i)
     const deleteButton = screen.getByText(/delete/i)
 
-    return {firstList, secondList, thirdList, createModeButton, deleteButton}
+    return {getListItem, createModeButton, deleteButton}
 }
 
 describe("Test Todo", () => {
     test("화면에 모든 요소들이 제대로 렌더링 되어야 함",()=>{
         //arrange
-        const {firstList, secondList, thirdList, createModeButton, deleteButton} = renderApp()
+        const {getListItem, createModeButton, deleteButton} = renderApp()
 
         //assert
-        expect(firstList).toBeInTheDocument()
-        expect(secondList).toBeInTheDocument()
-        expect(thirdList).toBeInTheDocument()
+        expect(getListItem(1)).toBeInTheDocument()
+        expect(getListItem(2)).toBeInTheDocument()
+        expect(getListItem(3)).toBeInTheDocument()
         expect(createModeButton).toBeInTheDocument()
         expect(deleteButton).toBeInTheDocument()
         expect(screen.getByTestId('title')).toBeInTheDocument()
@@ -55,7 +54,7 @@ describe("Test Todo", () => {
     })
     test("생성 버튼을 누르면 게시물이 정상적으로 생성되어야 함",()=>{
         //arrange
-        const {createModeButton} = renderApp()
+        const {createModeButton, getListItem} = renderApp()
 
         //act
         fireEvent.click(createModeButton)
@@ -64,19 +63,19 @@ describe("Test Todo", () => {
         fireEvent.click(screen.getByText(/생성/i))
 
         //assert
-        expect(screen.getByTestId(4)).toBeInTheDocument()
+        expect(getListItem(4)).toBeInTheDocument()
 
     })
     test("리스트 중 1개를 선택하고 삭제 버튼을 누르면 게시글이 삭제되어야 함",()=>{
         //arrange
-        const {thirdList, deleteButton} = renderApp()
+        const {getListItem, deleteButton} = renderApp()
     
         //act
-        fireEvent.click(thirdList)
+        fireEvent.click(getListItem(3))
         fireEvent.click(deleteButton)
     
         //assert
-        expect(thirdList).not.toBeInTheDocument()
+        expect(screen.queryByTestId(3)).toBeNull()
 
         })    
 
