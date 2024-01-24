@@ -1,12 +1,15 @@
 import {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { StateType2, TodoItem } from '../Practice2'
+
+type InputValue = Omit<TodoItem, 'id'>
 
 const TodoContent = () => {
     const dispatch = useDispatch()
-    const content = useSelector((state : any) => state.contents)
-    const mode = useSelector((state : any) => state.mode)
-    const selectedId = useSelector((state: any)=> state.selectedId)
-    const [inputValue, setInputValue] = useState<any>({
+    const content = useSelector((state : StateType2) => state.contents)
+    const mode = useSelector((state : StateType2) => state.mode)
+    const selectedId = useSelector((state: StateType2)=> state.selectedId)
+    const [inputValue, setInputValue] = useState<InputValue>({
         title : '',
         desc : ''
     })
@@ -14,7 +17,7 @@ const TodoContent = () => {
     return(
         <div className='container'>
             {mode === 'read' && 
-            content.map((item : any) =>
+            content.map((item) =>
                 item.id === selectedId && (
                     <>
                         <h2>{item.title}</h2>

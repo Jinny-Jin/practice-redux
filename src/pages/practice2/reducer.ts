@@ -1,3 +1,13 @@
+import { StateType2 } from './Practice2'
+
+type ActionType2 = {
+    id : number,
+    type : string,
+    title : string,
+    desc : string,
+    mode : string
+}
+
 const initialState = {
     contents : [
         {id:1, title : '6시 기상', desc:'6시 칼 기상 후 출근 준비'},
@@ -9,7 +19,7 @@ const initialState = {
     finalId : 3
 }
 
-const reducer = (state : any = initialState, action :any) => {
+const reducer = (state : StateType2 = initialState, action : ActionType2) => {
 
     switch (action.type) {
         case 'SELECT':
@@ -29,7 +39,7 @@ const reducer = (state : any = initialState, action :any) => {
             }]
             return({...state, contents : newContents})
         case 'DELETE' :
-            const deletedContents = state.contents.filter((item : any) => item.id !== state.selectedId)
+            const deletedContents = state.contents.filter((item) => item.id !== state.selectedId)
             return(
                     {...state, contents : deletedContents}
                 )
