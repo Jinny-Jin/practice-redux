@@ -25,7 +25,7 @@ const renderApp = () => {
   return {numberInput, plusButton, displayInput}
 }
 
-describe("Test App", () => {
+describe("Test Counter", () => {
   test("화면에 요소들이 제대로 렌더링 되야 함",()=>{
     //arrange
     const {numberInput, plusButton, displayInput} = renderApp()
@@ -58,7 +58,7 @@ describe("Test App", () => {
     fireEvent.click(plusButton)
 
     //assert
-    expect(displayInput).toHaveValue('30')
+    expect(displayInput).toHaveValue('35')
 
   })
   test("숫자 이외의 값을 입력했을 땐 더해지지 않아야 함",()=>{

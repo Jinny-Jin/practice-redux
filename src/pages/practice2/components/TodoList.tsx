@@ -12,10 +12,12 @@ const TodoList = () => {
             <ol>
                 {content.map((item) => {
                     return(
-                        <li key={item.id}>
-                            <label onClick={()=>{
-                                dispatch({type : 'SELECT', id : item.id})
-                            }}>{item.title}</label>
+                        <li key={item.id} 
+                        data-testid = {item.id}
+                        onClick={()=>{
+                            dispatch({type : 'SELECT', id : item.id})
+                        }}>
+                            <label>{item.title}</label>
                             <input type='checkbox'/>
                         </li>
                     )

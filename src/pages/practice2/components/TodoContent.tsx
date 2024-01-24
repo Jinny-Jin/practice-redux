@@ -19,24 +19,24 @@ const TodoContent = () => {
             {mode === 'read' && 
             content.map((item) =>
                 item.id === selectedId && (
-                    <>
-                        <h2>{item.title}</h2>
-                        <div>{item.desc}</div>
-                    </>
+                    <article key={item.id}>
+                        <h3 data-testid='title'>{item.title}</h3>
+                        <div data-testid='description'>{item.desc}</div>
+                    </article>
                 )
             )
             }
             {mode === 'create' && (
                 <>
                     <div>
-                        <label htmlFor='title'>Title</label>
-                        <input type='text' id='title' onChange={(e)=>{
+                        <label>Title</label>
+                        <input type='text' data-testid='titleInput' onChange={(e)=>{
                             setInputValue({...inputValue, title : e.target.value})
                         }}/>
                     </div>
                     <div className='content'>
-                        <label htmlFor='desc'>Detail</label>
-                        <textarea id='desc' onChange={(e)=>{
+                        <label>Detail</label>
+                        <textarea data-testid='descInput' onChange={(e)=>{
                             setInputValue({...inputValue, desc : e.target.value})
                         }}/>
                     </div>
