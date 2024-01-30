@@ -5,8 +5,10 @@ import DisplayNumberRoot from './components/DisplayNumberRoot';
 import store from './store';
 
 export interface StateType {
-  number : number,
-  inputValue : number
+  counter : {
+    number : number,
+    inputValue : number
+  }
 }
 
 const Counter = () => {
