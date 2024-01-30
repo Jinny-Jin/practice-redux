@@ -1,11 +1,12 @@
 import { StateType2 } from '../Practice2'
+import { create_mode, remove, select } from '../todoSlice'
 import TodoContent from './TodoContent'
 import { useDispatch, useSelector } from 'react-redux'
 
 
 const TodoList = () => {
     const dispatch = useDispatch()
-    const content = useSelector((state : StateType2) => state.contents)
+    const content = useSelector((state : StateType2) => state.todo.contents)
 
     return (
         <>
@@ -15,7 +16,7 @@ const TodoList = () => {
                         <li key={item.id} 
                         data-testid = {item.id}
                         onClick={()=>{
-                            dispatch({type : 'SELECT', id : item.id})
+                            dispatch(select(item.id))
                         }}>
                             <label>{item.title}</label>
                             <input type='checkbox'/>
@@ -25,10 +26,10 @@ const TodoList = () => {
             </ol>
             <div>
                 <button onClick={()=>{
-                    dispatch({type : 'CHANGE_MODE', mode : 'create'})
+                    dispatch(create_mode())
                 }}>create</button>
                 <button onClick={()=>{
-                    dispatch({type : 'DELETE'})
+                    dispatch(remove())
                 }}>delete</button>
             </div>
         <TodoContent/>

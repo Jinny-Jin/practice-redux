@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { StateType } from '../Practice1'
-import counterSlice from '../counterSlice'
+import { increment, input } from '../counterSlice'
 
 const AddNumber = () => {
     const dispatch = useDispatch()
@@ -11,14 +11,14 @@ const AddNumber = () => {
       const parsedNumber = Number(e.target.value)
 
       if(!Number.isNaN(parsedNumber)){
-        dispatch(counterSlice.actions.input(parsedNumber))
+        dispatch(input(parsedNumber))
       }else {
-        dispatch(counterSlice.actions.input(0))
+        dispatch(input(0))
       }
     }
 
     const clickButton = () => {
-      dispatch(counterSlice.actions.increment(inputNumber))
+      dispatch(increment(inputNumber))
     }
 
     return(
