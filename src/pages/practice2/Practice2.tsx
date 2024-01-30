@@ -10,10 +10,12 @@ export interface TodoItem {
 }
 
 export interface StateType2 {
-    contents : TodoItem[],
-    mode : string,
-    selectedId : number,
-    finalId : number
+    todo : {
+        contents : TodoItem[],
+        mode : string,
+        selectedId : number,
+        finalId : number    
+    }
 }
 
 const Todo = () => {

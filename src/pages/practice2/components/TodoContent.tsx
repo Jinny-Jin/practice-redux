@@ -1,14 +1,15 @@
 import {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { StateType2, TodoItem } from '../Practice2'
+import { create } from '../todoSlice'
 
 type InputValue = Omit<TodoItem, 'id'>
 
 const TodoContent = () => {
     const dispatch = useDispatch()
-    const content = useSelector((state : StateType2) => state.contents)
-    const mode = useSelector((state : StateType2) => state.mode)
-    const selectedId = useSelector((state: StateType2)=> state.selectedId)
+    const content = useSelector((state : StateType2) => state.todo.contents)
+    const mode = useSelector((state : StateType2) => state.todo.mode)
+    const selectedId = useSelector((state: StateType2)=> state.todo.selectedId)
     const [inputValue, setInputValue] = useState<InputValue>({
         title : '',
         desc : ''
@@ -41,7 +42,7 @@ const TodoContent = () => {
                         }}/>
                     </div>
                     <button onClick={()=>{
-                        dispatch({type : 'CREATE', title : inputValue.title, desc : inputValue.desc})
+                        dispatch(create({title : inputValue.title, desc : inputValue.desc}))
                     }}>생성</button>
                 </>
             

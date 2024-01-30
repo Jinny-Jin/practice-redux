@@ -13,3 +13,5 @@ const counterSlice = createSlice({
     }
 })
 export default counterSlice
+
+export const {increment, input} = counterSlice.actions
